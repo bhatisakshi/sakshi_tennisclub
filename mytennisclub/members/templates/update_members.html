@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block start %}
+<div class="container">  
+
+<form class="col-6 mx-auto card p-3 shadow-lg" enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+  <h2>Update Member</h2>
+  <hr>
+  
+  <div class="mb-3">
+      <label for="firstname" class="form-label">First Name</label>
+      <input id="firstname" name="firstname" value="{{ members.firstname }}" required type="text" class="form-control">
+  </div>
+
+  <div class="mb-3">
+      <label for="lastname" class="form-label">LastName</label>
+      <input id="lastname" name="lastname" value="{{ members.lastname }}" required type="text" class="form-control">
+  </div>
+
+  <div class="mb-3">
+      <label for="phone" class="form-label">Phone Number</label>
+      <input id="phone" name="phone" value="{{ members.phone }}" required type="text" class="form-control">
+  </div>
+
+  <div class="mb-3">
+      <label for="joined_date" class="form-label">Joining Date</label>
+      <input id="joined_date" name="joined_date" value="{{ members.joined_date|date:'Y-m-d' }}" required type="date" class="form-control">
+  </div>
+      
+  <div class="mb-3">
+      <label for="hobbies" class="form-label">Hobby</label>
+      <input id="hobbies" name="hobbies" value="{{ members.hobbies }}" required type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+</div>
+
+{% endblock %}

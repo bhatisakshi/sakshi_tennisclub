@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+<div class="container">
+
+<h2 align="center"> My Tennis Club - {{ members.firstname }}</h2>
+
+<br>
+<table class="table table-striped">
+  <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Member Name</th>
+        <th scope="col">Member Phone</th>
+        <th scope="col">Joined Date</th>
+        <th scope="col">Hobbies</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for member in members %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{member.firstname}} {{member.lastname}}</td>
+        <td>{{member.phone}}</td>
+        <td>{{member.joined_date}}</td>
+        <td>{{member.hobbies}}</td>
+        </tr>  
+      {% endfor %}
+    </tbody>
+</table>
+
+<form class="input-group" method="POST">
+    {% csrf_token %}
+  <a href="/members/" class="btn btn-success">Home</a>  
+    </form>
+
+
+</div>
+{% endblock %}

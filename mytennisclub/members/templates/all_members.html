@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<div class="container">
+    <h2 align="center">My Tennis Club - List of all Members</h2>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Member Name</th>
+                <th scope="col">Member Phone</th>
+                <th scope="col">Joined Date</th>
+                <th scope="col">Hobbies</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if members %}
+                {% for member in members %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ member.firstname }} {{ member.lastname }}</td>
+                    <td>{{ member.phone }}</td>
+                    <td>{{ member.joined_date }}</td>
+                    <td>{{ member.hobbies }}</td>
+                    <td><a href="/delete-member/{{ member.id }}/" class="btn btn-danger">Delete</a></td>
+                    <td><a href="/update-member/{{ member.id }}/" class="btn btn-success">Update</a></td>
+                </tr>  
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7" align="center">No members found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <form class="input-group" method="GET">
+        {% csrf_token %}
+        <a href="/add-member/" class="btn btn-success">Add user</a>  
+        <label class="form-label" for="form1"></label>
+        <input class="form-outline form-control" type="search" name="search" placeholder="Search" style="width: 50px; margin-left: 550px;" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+{% endblock %}

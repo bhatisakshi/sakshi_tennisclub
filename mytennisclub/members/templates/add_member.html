@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block start %}
+<div class="container">
+
+<form class="col-6 mx-auto card p-3 shadow-lg" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <h2>Add Member</h2>
+    <hr>
+    
+    <div class="mb-3">
+        <label for="firstname" class="form-label">First Name</label>
+        <input id="firstname" name="firstname" required type="text" class="form-control">
+    </div>
+  
+    <div class="mb-3">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input id="lastname" name="lastname" required type="text" class="form-control">
+    </div>
+  
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input id="phone" name="phone" required type="text" class="form-control">
+    </div>
+  
+    <div class="mb-3">
+        <label for="joined_date" class="form-label">Joining Date</label>
+        <input id="joined_date" name="joined_date" required type="date" class="form-control">
+    </div>
+        
+    <div class="mb-3">
+        <label for="hobbies" class="form-label"> Hobby </label>
+        <input id="hobbies" name="hobbies" required type="text" class="form-control">
+    </div>
+  
+    <button type="submit" class="btn btn-success">Add Member</button>
+  </form>
+  
+</div>
+
+{% endblock %}
